@@ -21,7 +21,7 @@ class SinglePost extends Component {
     })
       .then(res => {
         if (res.status !== 200) {
-          throw new Error('Failed to fetch status');
+          throw new Error('Failed to fetch image');
         }
         return res.json();
       })
@@ -42,14 +42,16 @@ class SinglePost extends Component {
   render() {
     return (
       <section className="single-post">
-        <h1>{this.state.title}</h1>
-        <h2>
+        <a href="/"><button class="button button--accent button--raised">Back</button></a>
+        {/* <h1>{this.state.title}</h1> */}
+        {/* <h2>
           Created by {this.state.author} on {this.state.date}
-        </h2>
-        <div className="single-post__image">
-          <Image contain imageUrl={this.state.image} />
-        </div>
-        <p>{this.state.content}</p>
+        </h2> */}
+        {/* <div className="single-post__image">
+          <Image contain imageUrl={this.state.image} full/>
+        </div> */}
+        <img class="single-post__isolated-image" src={this.state.image}></img>
+        {/* <p>{this.state.content}</p> */}
       </section>
     );
   }

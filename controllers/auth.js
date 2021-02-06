@@ -46,28 +46,28 @@ exports.login = async (req, res, next) => {
   }
 }
 
-exports.getUserStatus = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.userId)
-    if(!user){
-      throwErr("User not found", 404);
-    }
-    res.status(200).json({status: user.status});
-  } catch (err) {
-    next(ifErr(err, err.statusCode))
-  }
-}
+// exports.getUserStatus = async (req, res, next) => {
+//   try {
+//     const user = await User.findById(req.userId)
+//     if(!user){
+//       throwErr("User not found", 404);
+//     }
+//     res.status(200).json({status: user.status});
+//   } catch (err) {
+//     next(ifErr(err, err.statusCode))
+//   }
+// }
 
-exports.updateUserStatus = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.userId)
-    if(!user){
-      throwErr("User not found", 404);
-    }
-    user.status = req.body.status;
-    await user.save()
-    res.status(200).json({message: "User status updated"});
-  } catch (err) {
-    next(ifErr(err, err.statusCode))
-  }
-}
+// exports.updateUserStatus = async (req, res, next) => {
+//   try {
+//     const user = await User.findById(req.userId)
+//     if(!user){
+//       throwErr("User not found", 404);
+//     }
+//     user.status = req.body.status;
+//     await user.save()
+//     res.status(200).json({message: "User status updated"});
+//   } catch (err) {
+//     next(ifErr(err, err.statusCode))
+//   }
+// }

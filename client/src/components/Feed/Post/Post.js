@@ -7,10 +7,10 @@ import './Post.css';
 const post = props => (
   <article className="post">
     <header className="post__header">
-      <h3 className="post__meta" style={{display: "inline"}}>
+      <h3 className="post__meta">
         {props.author} ({props.date})
       </h3>
-      <div className="post__actions" style={{display: "inline", float: "right"}}>
+      <div className="post__actions">
         <Button mode="flat" link={props.id}>
           View
         </Button>
@@ -21,13 +21,12 @@ const post = props => (
           X
         </Button>
       </div>
-      {/* <h1 className="post__title">{props.title}</h1> */}
     </header>
     <hr></hr>
-    <div style={{display: "inline", fontSize: "20px"}} className="post__content">{props.content}</div>
     <div className="post__image">
       <Image imageUrl={'http://localhost:8080/'+props.image} contain />
     </div>
+    <div className="post__content">{props.content}</div>
 
   </article>
 );

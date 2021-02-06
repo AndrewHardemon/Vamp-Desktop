@@ -23,21 +23,6 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:8080/auth/status', {
-      headers: {
-        Authorization: 'Bearer ' + this.props.token
-      }
-    })
-      .then(res => {
-        if (res.status !== 200) {
-          throw new Error('Failed to fetch user status.');
-        }
-        return res.json();
-      })
-      .then(resData => {
-        this.setState({ status: resData.status });
-      })
-      .catch(this.catchError);
 
     this.loadPosts();
     const socket = openSocket('http://localhost:8080');
@@ -127,29 +112,6 @@ class Feed extends Component {
       .catch(this.catchError);
   };
 
-  statusUpdateHandler = event => {
-    event.preventDefault();
-    fetch('http://localhost:8080/auth/status', {
-      method: 'PATCH',
-      headers: {
-        Authorization: 'Bearer ' + this.props.token,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        status: this.state.status
-      })
-    })
-      .then(res => {
-        if (res.status !== 200 && res.status !== 201) {
-          throw new Error("Can't update status!");
-        }
-        return res.json();
-      })
-      .then(resData => {
-        console.log(resData);
-      })
-      .catch(this.catchError);
-  };
 
   newPostHandler = () => {
     this.setState({ isEditing: true });
@@ -175,7 +137,6 @@ class Feed extends Component {
       editLoading: true
     });
     const formData = new FormData();
-    formData.append('title', postData.title);
     formData.append('content', postData.content);
     formData.append('image', postData.image);
     let url = 'http://localhost:8080/feed/post';
@@ -202,7 +163,6 @@ class Feed extends Component {
         console.log(resData);
         const post = {
           _id: resData.post._id,
-          title: resData.post.title,
           content: resData.post.content,
           creator: resData.post.creator,
           createdAt: resData.post.createdAt
@@ -277,20 +237,6 @@ class Feed extends Component {
           onCancelEdit={this.cancelEditHandler}
           onFinishEdit={this.finishEditHandler}
         />
-        <section className="feed__status">
-          <form onSubmit={this.statusUpdateHandler}>
-            <Input
-              type="text"
-              placeholder="Your status"
-              control="input"
-              onChange={this.statusInputChangeHandler}
-              value={this.state.status}
-            />
-            <Button mode="flat" type="submit">
-              Update
-            </Button>
-          </form>
-        </section>
         <section className="feed__control">
           <Button mode="raised" design="accent" onClick={this.newPostHandler}>
             New Post
@@ -318,7 +264,6 @@ class Feed extends Component {
                   id={post._id}
                   author={post.creator.name}
                   date={new Date(post.createdAt).toLocaleDateString('en-US')}
-                  title={post.title}
                   image={post.imageUrl}
                   content={post.content}
                   onStartEdit={this.startEditPostHandler.bind(this, post._id)}

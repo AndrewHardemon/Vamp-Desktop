@@ -2,7 +2,7 @@
   width: 90%;
   margin: auto;
   text-align: center;
-  color: #3b0062;
+  color: black;
 }
 
 .single-post h2 {
@@ -16,6 +16,12 @@
   height: 20rem;
   width: 20rem;
   margin: 1rem auto;
+}
+
+.single-post__isolated-image {
+  display: block;
+  margin-top: 10px;
+  margin-left: -12%;
 }
 
 @media (min-width: 768px) {
