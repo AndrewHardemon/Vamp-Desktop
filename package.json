@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --timeout 5000",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start2": "nodemon app.js",
     "start:prod": "node app.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
@@ -33,7 +34,7 @@
     "chai": "^4.2.0",
     "electron": "^11.2.1",
     "mocha": "^8.2.1",
-    "nodemon": "^1.18.4",
+    "nodemon": "^1.19.4",
     "sinon": "^9.2.4"
   }
 }

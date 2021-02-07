@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require('multer');
 
+const PORT = process.env.PORT || 8080;
+
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
 
@@ -17,7 +19,7 @@ const fileStorage = multer.diskStorage({
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString() + '-' + file.originalname);
   }
-});
+}); 
 
 const fileFilter = (req, file, cb) => {
   if (
@@ -64,7 +66,7 @@ mongoose
     process.env.MONGODB_PASS
   )
   .then(result => {
-    const server = app.listen(8080);
+    const server = app.listen(PORT);
     const io = require('./socket').init(server);
     io.on('connection', socket => {
       console.log('Client connected');

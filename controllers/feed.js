@@ -28,10 +28,9 @@ exports.createPost = async (req, res, next) => {
   // if(!req.file){ //* remove later
   //   throwErr("No image provided", 422);
   // }
-
-  const imageUrl = req.file.path;
-  const {title, content} = req.body;
-  const post = new Post({title, content, imageUrl, creator: req.userId})
+  const imageUrl = req.file ? req.file.path : ""
+  const {content} = req.body;
+  const post = new Post({content, imageUrl, creator: req.userId})
   try {
     await post.save();
     const user = await User.findById(req.userId);
@@ -42,7 +41,7 @@ exports.createPost = async (req, res, next) => {
     res.status(201).json({message: "Post created successfully!", post, creator: {_id, name}});
     return savedUser;
   } catch(err) {
-    next(ifErr(err, err.statusCode))
+    next(ifErr(err, err.statusCode)) 
   };
 }
 
@@ -56,7 +55,7 @@ exports.getPost = async (req, res, next) => {
     res.status(200).json({message: "Post fetched.", post});
   } catch(err) {
     next(ifErr(err, err.statusCode));
-  }
+  } 
 }
 
 exports.updatePost = async (req, res, next) => {
@@ -65,8 +64,9 @@ exports.updatePost = async (req, res, next) => {
     throwErr("Validation failed, entered data is incorrect", 422);
   }
   const {postId} = req.params;
-  const {title, content} = req.body;
+  const {content} = req.body;
   let imageUrl = req.body.image;
+  console.log("hello")
   if(req.file) {
     imageUrl = req.file.path;
   }
@@ -86,7 +86,6 @@ exports.updatePost = async (req, res, next) => {
     if(imageUrl !== post.imageUrl){
       clearImage(post.imageUrl);
     }
-    post.title = title;
     post.imageUrl = imageUrl;
     post.content = content;
     const result = await post.save();
