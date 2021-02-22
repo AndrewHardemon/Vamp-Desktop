@@ -21,7 +21,7 @@
 .single-post__isolated-image {
   display: block;
   margin-top: 10px;
-  margin-left: -12%;
+  margin-left: -12%; /*temp fix. need to remove later*/
 }
 
 @media (min-width: 768px) {
