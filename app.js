@@ -50,8 +50,18 @@ app.use((req, res, next) => {
   next();
 });
 
+//Serve static assets
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, "./client/build")))
+}
+
+
 app.use('/feed', feedRoutes);
 app.use('/auth', authRoutes);
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+})
 
 app.use((error, req, res, next) => {
   console.log(error);

@@ -12,6 +12,7 @@ import SinglePostPage from './pages/Feed/SinglePost/SinglePost';
 import LoginPage from './pages/Auth/Login';
 import SignupPage from './pages/Auth/Signup';
 import Modal from "./components/Modal/Modal";
+import {BASE_API_URL} from "./util/constants";
 import './App.css';
 
 
@@ -67,7 +68,8 @@ class App extends Component {
   loginHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    fetch('http://localhost:8080/auth/login', {
+    console.log(`${BASE_API_URL}/auth/login`)
+    fetch(`${BASE_API_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -119,7 +121,7 @@ class App extends Component {
   signupHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    fetch('http://localhost:8080/auth/signup', {
+    fetch(`${BASE_API_URL}/auth/signup`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
