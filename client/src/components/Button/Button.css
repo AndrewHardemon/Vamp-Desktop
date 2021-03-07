@@ -74,12 +74,15 @@
 
 .button.button--accent.button--raised {
   background: #ffb86c;
-  color: black;
+  border-color: #3b0062;
+  color: #3b0062;
 }
 
 .button--raised.button--accent:hover,
 .button--raised.button--accent:active {
-  background: #fbc766;
+  background: transparent;
+  color: #ffb86c;
+  border-color: #ffb86c;
 }
 
 .button.button--danger {

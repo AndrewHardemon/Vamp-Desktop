@@ -8,7 +8,7 @@
   padding: 0.25rem 0;
   margin: 0 1rem;
   border: 1px solid #3b0062;
-  background: transparent;
+  background: #fab83f;
   font: inherit;
   cursor: pointer;
   font-size: 1rem;
@@ -19,6 +19,7 @@
 .paginator__control:active {
   color: #fab83f;
   border-color: #fab83f;
+  background: transparent;
 }
 
 .paginator__control:focus {

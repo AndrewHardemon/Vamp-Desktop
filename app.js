@@ -73,7 +73,12 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    process.env.MONGODB_PASS
+    process.env.MONGODB_PASS || 'mongodb://localhost/vampdesktop', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: true,
+    }
   )
   .then(result => {
     const server = app.listen(PORT);

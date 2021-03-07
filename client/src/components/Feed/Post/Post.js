@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '../../Button/Button';
 import Image from "../../Image/Image"
+import {BASE_API_URL} from "../../../util/constants";
 import './Post.css';
 
 const post = props => (
@@ -24,7 +25,7 @@ const post = props => (
     </header>
     <hr></hr>
     <div className="post__image" style={props.image ? null : {display: "none"}}>
-      <Image imageUrl={'http://localhost:8080/'+props.image} contain />
+      <Image imageUrl={`${BASE_API_URL}/` + props.image} contain />
     </div>
     <div className="post__content">{props.content}</div>
 
