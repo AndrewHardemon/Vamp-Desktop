@@ -15,13 +15,18 @@
 .single-post__image {
   height: 20rem;
   width: 20rem;
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
 }
 
+.single-post__container {
+  display: flex;
+  justify-content: center;
+}
 .single-post__isolated-image {
   display: block;
-  margin-top: 10px;
-  margin-left: -12%; /*temp fix. need to remove later*/
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {

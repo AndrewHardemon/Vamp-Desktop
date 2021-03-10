@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Image from '../../../components/Image/Image';
 import {BASE_API_URL} from "../../../util/constants";
+import { Link } from 'react-router-dom';
 import './SinglePost.css';
 
 class SinglePost extends Component {
@@ -43,7 +44,7 @@ class SinglePost extends Component {
   render() {
     return (
       <section className="single-post">
-        <a href="/"><button class="button button--accent button--raised">Back</button></a>
+        <Link to="/"><button class="button button--accent button--raised">Back</button></Link>
         {/* <h1>{this.state.title}</h1> */}
         {/* <h2>
           Created by {this.state.author} on {this.state.date}
@@ -51,7 +52,9 @@ class SinglePost extends Component {
         {/* <div className="single-post__image">
           <Image contain imageUrl={this.state.image} full/>
         </div> */}
-        <img class="single-post__isolated-image" src={this.state.image}></img>
+        <div className="single-post__container">
+          <img class="single-post__isolated-image" src={this.state.image}></img>
+        </div>
         {/* <p>{this.state.content}</p> */}
       </section>
     );
