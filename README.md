@@ -5,8 +5,11 @@
 
 A Real Time Chat Application created with the MERN stack, socket.io, and Electron 
 
-## Contributers
+### Contributers
 [AeroAtlas](https://github.com/AeroAtlas/)
+
+### Live Site
+[Vamp-Desktop](https://vamp-desktop.herokuapp.com/)
 
 ## Technologies
 
@@ -20,6 +23,11 @@ A Real Time Chat Application created with the MERN stack, socket.io, and Electro
     <li>React</li>
     <li>Electron</li>
 </ul>
+
+
+## Preview of Project
+<img src="./VampDesktop.png"></png>
+
 
 ## Table of Contents 
 
