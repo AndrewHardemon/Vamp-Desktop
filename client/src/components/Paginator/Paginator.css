@@ -25,3 +25,7 @@
 .paginator__control:focus {
   outline: none;
 }
+
+.paginator__control:disabled {
+  background-color: grey;
+}

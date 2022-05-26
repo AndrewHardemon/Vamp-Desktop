@@ -16,6 +16,11 @@
   text-align: center;
 }
 
+.feed__footer {
+  display: flex;
+  justify-content: space-around;
+}
+
 .new-post__preview-image {
   width: 15rem;
   height: 7rem;

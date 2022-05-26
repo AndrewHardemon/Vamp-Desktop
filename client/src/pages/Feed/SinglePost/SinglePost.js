@@ -31,7 +31,7 @@ class SinglePost extends Component {
         this.setState({
           title: resData.post.title,
           author: resData.post.creator.name,
-          image: `${BASE_API_URL}/` + resData.post.imageUrl,
+          image: `${BASE_API_URL}/images/` + resData.post.imageUrl,
           date: new Date(resData.post.createdAt).toLocaleDateString('en-US'),
           content: resData.post.content
         });
@@ -44,7 +44,7 @@ class SinglePost extends Component {
   render() {
     return (
       <section className="single-post">
-        <Link to="/"><button class="button button--accent button--raised">Back</button></Link>
+        <Link to="/"><button class="button button--accent button--raised">Go Back</button></Link>
         {/* <h1>{this.state.title}</h1> */}
         {/* <h2>
           Created by {this.state.author} on {this.state.date}
@@ -53,7 +53,7 @@ class SinglePost extends Component {
           <Image contain imageUrl={this.state.image} full/>
         </div> */}
         <div className="single-post__container">
-          <img class="single-post__isolated-image" src={this.state.image}></img>
+          <img class="single-post__isolated-image" style={{maxHeight:"90vh"}} src={this.state.image}></img>
         </div>
         {/* <p>{this.state.content}</p> */}
       </section>

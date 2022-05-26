@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import {BASE_API_URL} from "../../../util/constants";
 import './Post.css';
 
-const post = props => (
+const Post = props => (
   <article className="post">
     <header className="post__header">
       <h3 className="post__meta">
@@ -35,4 +35,4 @@ const post = props => (
   </article>
 );
 
-export default post;
+export default Post;
