@@ -1,13 +1,13 @@
 {
-  "name": "restapipractice",
+  "name": "vamp-desktop",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha --timeout 5000",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start2": "nodemon app.js",
-    "start:prod": "node app.js",
+    "start2": "nodemon server.js",
+    "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",

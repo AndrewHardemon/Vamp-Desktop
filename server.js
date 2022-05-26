@@ -1,7 +1,7 @@
 const path = require('path');
+const fs = require('fs');
 require("dotenv").config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require('multer');
 
@@ -14,14 +14,25 @@ const app = express();
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'images');
+    console.log("fileStorage", file)
+    const fullDir = path.join(__dirname, 'images')
+    if (!fs.existsSync(fullDir)) {
+      fs.mkdir(fullDir, function(err){
+        if (err) throw err;
+        cb(null, fullDir);
+      });
+    } else {
+      cb(null, fullDir);
+    }
   },
   filename: (req, file, cb) => {
+    console.log("filename", file)
     cb(null, new Date().toISOString() + '-' + file.originalname);
   }
 }); 
 
 const fileFilter = (req, file, cb) => {
+  console.log("filefilter", file)
   if (
     file.mimetype === 'image/png' ||
     file.mimetype === 'image/jpg' ||
@@ -33,11 +44,12 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
-app.use(bodyParser.json()); // application/json
-app.use(
-  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
-);
+app.use(express.urlencoded({extended: true})); // x-www-form-urlencoded <form>
+app.use(express.json()); // application/json
+
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter, onFileUploadStart: function(file){
+  console.log(file.originalname + " is starting ... ")
+} }).single('image'));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((req, res, next) => {

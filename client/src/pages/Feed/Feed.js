@@ -171,6 +171,7 @@ class Feed extends Component {
         };
         this.setState(prevState => {
           return {
+            ...prevState,
             isEditing: false,
             editPost: null,
             editLoading: false
@@ -266,7 +267,7 @@ class Feed extends Component {
                   id={post._id}
                   author={post.creator.name}
                   date={new Date(post.createdAt).toLocaleDateString('en-US')}
-                  image={post.imageUrl}
+                  image={post.imageUrl ? post.imageUrl : null}
                   content={post.content}
                   onStartEdit={this.startEditPostHandler.bind(this, post._id)}
                   onDelete={this.deletePostHandler.bind(this, post._id)}

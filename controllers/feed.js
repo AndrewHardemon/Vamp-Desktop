@@ -86,9 +86,14 @@ exports.updatePost = async (req, res, next) => {
     if(imageUrl !== post.imageUrl){
       clearImage(post.imageUrl);
     }
-    post.imageUrl = imageUrl;
+    if (imageUrl === "undefined" || !imageUrl){
+      post.imageUrl = undefined
+    } else {
+      post.imageUrl = imageUrl;
+    }
     post.content = content;
     const result = await post.save();
+    console.log(result)
     io.getIO().emit("posts", {action: "update", post: result});
     res.status(200).json({message: "Post updated", post: result});
   } catch (err) {
