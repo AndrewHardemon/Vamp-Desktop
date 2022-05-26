@@ -27,7 +27,7 @@ const post = props => (
     <hr></hr>
     <div className="post__image" style={props.image ? null : {display: "none"}}>
       <Link to={props.id}>
-        <Image imageUrl={`${BASE_API_URL}/` + props.image} contain /> 
+        <Image imageUrl={`${BASE_API_URL}/images/` + props.image} contain /> 
       </Link>
     </div>
     <div className="post__content">{props.content}</div>

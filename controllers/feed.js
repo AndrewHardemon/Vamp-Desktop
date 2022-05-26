@@ -28,7 +28,8 @@ exports.createPost = async (req, res, next) => {
   // if(!req.file){ //* remove later
   //   throwErr("No image provided", 422);
   // }
-  const imageUrl = req.file ? req.file.path : ""
+  //http://localhost:8080/images/2022-05-26T08-07-23.353Z-20220514_161308.jpg
+  const imageUrl = req.file ? req.file.filename : ""
   const {content} = req.body;
   const post = new Post({content, imageUrl, creator: req.userId})
   try {
@@ -68,7 +69,7 @@ exports.updatePost = async (req, res, next) => {
   let imageUrl = req.body.image;
   console.log("hello")
   if(req.file) {
-    imageUrl = req.file.path;
+    imageUrl = req.file.filename;
   }
   // if(!imageUrl){
   //   throwErr("No file picked", 422);
@@ -127,7 +128,8 @@ exports.deletePost = async (req,res,next) => {
 //Helper Functions (move to own file soon)
 const clearImage = filePath => {
   if(filePath){
-    filePath = path.join(__dirname, "..", filePath);
+    console.log(filePath)
+    filePath = path.join(__dirname, "..", "images", filePath);
     fs.unlink(filePath, err => console.log(err));
   }
 }
