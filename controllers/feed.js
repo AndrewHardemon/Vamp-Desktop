@@ -10,7 +10,7 @@ const io = require("../socket");
 
 exports.getPosts = async (req, res, next) => {
   const currentPage = req.query.page || 1;
-  const perPage = 8;
+  const perPage = 6;
   try {
     const totalItems = await Post.find().countDocuments();
     const posts = await Post.find().populate("creator").sort({createdAt: 1}).skip((currentPage - 1) * perPage).limit(perPage);
