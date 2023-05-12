@@ -170,59 +170,7 @@ class App extends Component {
   };
 
   render() {
-    let routes = (
-      <Switch>
-        <Route
-          path="/"
-          exact
-          render={props => (
-            <LoginPage
-              {...props}
-              onLogin={this.loginHandler}
-              loading={this.state.authLoading}
-            />
-          )}
-        />
-        <Route
-          path="/signup"
-          exact
-          render={props => (
-            <SignupPage
-              {...props}
-              onSignup={this.signupHandler}
-              loading={this.state.authLoading}
-            />
-          )}
-        />
-        <Redirect to="/" />
-      </Switch>
-    );
-    if (this.state.isAuth) {
-      routes = (
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={props => (
-              <FeedPage userId={this.state.userId} token={this.state.token} />
-            )}
-          />
-          <Route
-            path="/:postId"
-            render={props => (
-              // <Modal>
-                <SinglePostPage
-                  {...props}
-                  userId={this.state.userId}
-                  token={this.state.token}
-                />
-              // </Modal>
-            )}
-          />
-          <Redirect to="/" />
-        </Switch>
-      );
-    }
+    let { isAuth } = this.state;
     return (
       <Fragment>
         {this.state.showBackdrop && (
@@ -235,7 +183,7 @@ class App extends Component {
               <MainNavigation
                 onOpenMobileNav={this.mobileNavHandler.bind(this, true)}
                 onLogout={this.logoutHandler}
-                isAuth={this.state.isAuth}
+                isAuth={isAuth}
                 name={this.state.name}
               />
             </Toolbar>
@@ -246,12 +194,28 @@ class App extends Component {
               mobile
               onChooseItem={this.mobileNavHandler.bind(this, false)}
               onLogout={this.logoutHandler}
-              isAuth={this.state.isAuth}
+              isAuth={isAuth}
               name={this.state.name}
             />
           }
         />
-        {routes}
+        <Switch>
+          <Route path="/" exact render={props => (
+              !isAuth ? ( 
+                <LoginPage {...props} onLogin={this.loginHandler} loading={this.state.authLoading} />
+              ) : (
+                <FeedPage userId={this.state.userId} token={this.state.token} />
+              )
+            )} />
+          <Route path={!isAuth ? "/signup" : "/:postId"} exact render={props => (
+            !isAuth ? ( 
+                <SignupPage {...props} onSignup={this.signupHandler} loading={this.state.authLoading} />
+              ) : (
+                <SinglePostPage {...props} userId={this.state.userId} token={this.state.token} />
+              )
+            )} />
+          <Redirect to="/" />
+        </Switch>
       </Fragment>
     );
   }
