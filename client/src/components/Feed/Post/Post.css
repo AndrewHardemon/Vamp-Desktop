@@ -6,25 +6,25 @@
   padding: 0.5rem;
 }
 
-.post__meta {
+.post_meta {
   font-size: 1rem;
   color: black;
   margin: 0;
   display: inline;
 }
 
-.post__image {
+.post_image {
   height: 7rem;
   display: inline;
   /* width: auto; */
 }
 
-.post__content {
+.post_content {
   display: inline;
   font-size: 20px;
 }
 
-.post__actions {
+.post_actions {
   text-align: right;
   display: inline;
   float: right;

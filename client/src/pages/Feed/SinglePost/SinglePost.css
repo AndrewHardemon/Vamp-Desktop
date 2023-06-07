@@ -12,17 +12,17 @@
   border-bottom: 2px solid #464646;
 }
 
-.single-post__image {
+.single-post_image {
   height: 20rem;
   width: 20rem;
   /* margin: 1rem auto; */
 }
 
-.single-post__container {
+.single-post_container {
   display: flex;
   justify-content: center;
 }
-.single-post__isolated-image {
+.single-post_isolated-image {
   display: block;
   margin-top: 1rem;
   display: flex;

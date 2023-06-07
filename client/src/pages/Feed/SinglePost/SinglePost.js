@@ -49,11 +49,11 @@ class SinglePost extends Component {
         {/* <h2>
           Created by {this.state.author} on {this.state.date}
         </h2> */}
-        {/* <div className="single-post__image">
+        {/* <div className="single-post_image">
           <Image contain imageUrl={this.state.image} full/>
         </div> */}
-        <div className="single-post__container">
-          <img class="single-post__isolated-image" style={{maxHeight:"90vh"}} src={this.state.image}></img>
+        <div className="single-post_container">
+          <img class="single-post_isolated-image" style={{maxHeight:"90vh"}} src={this.state.image}></img>
         </div>
         {/* <p>{this.state.content}</p> */}
       </section>

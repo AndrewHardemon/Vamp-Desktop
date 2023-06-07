@@ -1,33 +1,33 @@
-.feed__status {
+.feed_status {
   width: 90%;
   margin: 1rem auto;
 }
 
-.feed__status form {
+.feed_status form {
   display: flex;
   align-items: center;
 }
 
-.feed__status form * {
+.feed_status form * {
   margin: 0 0.5rem;
 }
 
-.feed__control {
+.feed_control {
   text-align: center;
 }
 
-.feed__footer {
+.feed_footer {
   display: flex;
   justify-content: space-around;
 }
 
-.new-post__preview-image {
+.new-post_preview-image {
   width: 15rem;
   /* height: 7rem; */
 }
 
 @media (min-width: 768px) {
-  .feed__status {
+  .feed_status {
     width: 30rem;
   }
 }

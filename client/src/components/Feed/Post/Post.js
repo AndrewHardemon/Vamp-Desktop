@@ -8,11 +8,11 @@ import './Post.css';
 
 const Post = props => (
   <article className="post">
-    <header className="post__header">
-      <h3 className="post__meta">
+    <header className="post_header">
+      <h3 className="post_meta">
         {props.author} ({props.date})
       </h3>
-      <div className="post__actions">
+      <div className="post_actions">
         <Button mode="flat" link={props.id}>
           View
         </Button>
@@ -25,12 +25,12 @@ const Post = props => (
       </div>
     </header>
     <hr></hr>
-    <div className="post__image" style={props.image ? null : {display: "none"}}>
+    <div className="post_image" style={props.image ? null : {display: "none"}}>
       <Link to={props.id}>
         <Image imageUrl={`${BASE_API_URL}/images/` + props.image} contain /> 
       </Link>
     </div>
-    <div className="post__content">{props.content}</div>
+    <div className="post_content">{props.content}</div>
 
   </article>
 );
