@@ -1,9 +1,9 @@
-.paginator__controls {
+.paginator_controls {
   display: flex;
   justify-content: center;
 }
 
-.paginator__control {
+.paginator_control {
   width: 5rem;
   padding: 0.25rem 0;
   margin: 0 1rem;
@@ -15,17 +15,17 @@
   color: #3b0062;
 }
 
-.paginator__control:hover,
-.paginator__control:active {
+.paginator_control:hover,
+.paginator_control:active {
   color: #fab83f;
   border-color: #fab83f;
   background: transparent;
 }
 
-.paginator__control:focus {
+.paginator_control:focus {
   outline: none;
 }
 
-.paginator__control:disabled {
+.paginator_control:disabled {
   background-color: grey;
 }

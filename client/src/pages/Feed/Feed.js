@@ -41,11 +41,14 @@ class Feed extends Component {
   addPost = post => {
     this.setState(prevState => {
       const updatedPosts = [...prevState.posts];
+      console.log(prevState)
       if (prevState.postPage === 1) {
-        if (prevState.posts.length >= 6) {
-          updatedPosts.shift();
+        // if (prevState.posts.length >= 6) {
+        //   // updatedPosts.shift();
+        // }
+        if(prevState.posts.length < 6) {
+          updatedPosts.push(post);
         }
-        updatedPosts.push(post);
       }
       return {
         posts: updatedPosts,
@@ -240,7 +243,7 @@ class Feed extends Component {
           onCancelEdit={this.cancelEditHandler}
           onFinishEdit={this.finishEditHandler}
         />
-        <section className="feed__control">
+        <section className="feed_control">
           <Button mode="raised" design="accent" onClick={this.newPostHandler}>
             New Post
           </Button>

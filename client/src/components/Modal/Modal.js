@@ -7,11 +7,11 @@ import './Modal.css';
 const modal = props =>
   ReactDOM.createPortal(
     <div className="modal">
-      <header className="modal__header">
+      <header className="modal_header">
         <h1>{props.title}</h1>
       </header>
-      <div className="modal__content">{props.children}</div>
-      <div className="modal__actions">
+      <div className="modal_content">{props.children}</div>
+      <div className="modal_actions">
         <Button design="danger" mode="flat" onClick={props.onCancelModal}>
           Cancel
         </Button>

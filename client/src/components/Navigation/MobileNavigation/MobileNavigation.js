@@ -6,7 +6,7 @@ import './MobileNavigation.css';
 const mobileNavigation = props => (
   <nav className={['mobile-nav', props.open ? 'open' : ''].join(' ')}>
     <ul
-      className={['mobile-nav__items', props.mobile ? 'mobile' : ''].join(' ')}
+      className={['mobile-nav_items', props.mobile ? 'mobile' : ''].join(' ')}
     >
       <NavigationItems
         mobile

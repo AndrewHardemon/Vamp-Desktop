@@ -17,13 +17,13 @@
   transform: translateX(0);
 }
 
-.mobile-nav__items {
+.mobile-nav_items {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.mobile-nav__items.mobile {
+.mobile-nav_items.mobile {
     flex-direction: column;
 }

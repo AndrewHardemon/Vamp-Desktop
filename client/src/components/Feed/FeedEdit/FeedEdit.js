@@ -164,7 +164,7 @@ class FeedEdit extends Component {
               valid={this.state.postForm['image'].valid}
               touched={this.state.postForm['image'].touched}
             />
-            <div className="new-post__preview-image">
+            <div className="new-post_preview-image">
               {!this.state.imagePreview && <p>Please choose an image.</p>}
               {this.state.imagePreview && (
                 <Image imageUrl={this.state.imagePreview} contain left />

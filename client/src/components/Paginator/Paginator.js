@@ -5,17 +5,17 @@ import './Paginator.css';
 const paginator = props => (
   <div className="paginator">
     {props.children}
-    <div className="paginator__controls">
+    <div className="paginator_controls">
       {/* {props.currentPage > 1 && ( */}
-        <button className="paginator__control" disabled={props.currentPage <= 1} onClick={props.onPrevious}>
+        <button className="paginator_control" disabled={props.currentPage <= 1} onClick={props.onPrevious}>
           Previous
         </button>
       {/* )} */}
-      {/* <div className='feed__footer'> */}
+      {/* <div className='feed_footer'> */}
         <h3>Page {props.currentPage}</h3>
       {/* </div> */}
       {/* {props.currentPage < props.lastPage && ( */}
-        <button className="paginator__control" disabled={props.currentPage >= props.lastPage} onClick={props.onNext}>
+        <button className="paginator_control" disabled={props.currentPage >= props.lastPage} onClick={props.onNext}>
           Next
         </button>
       {/* )} */}
