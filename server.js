@@ -49,10 +49,17 @@ const fileFilter = (req, file, cb) => {
 app.use(express.urlencoded({extended: true})); // x-www-form-urlencoded <form>
 app.use(express.json()); // application/json
 
-app.use(multer({ storage: fileStorage, fileFilter: fileFilter, onFileUploadStart: function(file){
+app.use(multer({ storage: fileStorage, fileFilter, onFileUploadStart: function(file){
   console.log(file.originalname + " is starting ... ")
+  const encoded = file.buffer.toString('base64');
+  console.log(encoded)
 } }).single('image'));
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
+if(process.env.NODE_ENV === "production"){
+  app.use('/images', express.static(path.join(__dirname, 'images')));
+} else {
+  app.use('/images', express.static(path.join(__dirname, 'images')));
+}
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -68,7 +75,6 @@ app.use((req, res, next) => {
 if(process.env.NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname, "./client/build")))
 }
-
 
 app.use('/feed', feedRoutes);
 app.use('/auth', authRoutes);
@@ -94,10 +100,10 @@ mongoose
       useFindAndModify: true,
     }
   )
-  .then(result => {
+  .then((_result) => {
     const server = app.listen(PORT);
     const io = require('./socket').init(server);
-    io.on('connection', socket => {
+    io.on('connection', (_socket) => {
       console.log('Client connected');
     });
   })
