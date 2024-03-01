@@ -15,7 +15,7 @@ const paginator = props => (
         <h3>Page {props.currentPage}</h3>
       {/* </div> */}
       {/* {props.currentPage < props.lastPage && ( */}
-        <button className="paginator_control" disabled={props.currentPage >= props.lastPage} onClick={props.onNext}>
+        <button className="paginator_control" disabled={props.currentPage >= props.lastPage || props.totalPosts < 7} onClick={props.onNext}>
           Next
         </button>
       {/* )} */}

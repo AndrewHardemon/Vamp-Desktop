@@ -263,6 +263,7 @@ class Feed extends Component {
               onNext={this.loadPosts.bind(this, 'next')}
               lastPage={Math.floor(this.state.totalPosts / 2) - 1}
               currentPage={this.state.postPage}
+              totalPosts={this.state.totalPosts}
             >
               {this.state.posts.map(post => (
                 <Post
