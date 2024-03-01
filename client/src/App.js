@@ -146,6 +146,9 @@ class App extends Component {
       })
       .then(resData => {
         console.log(resData);
+        localStorage.setItem('token', resData.token);
+        localStorage.setItem('userId', resData.userId);
+        localStorage.setItem("name", resData.username);
         this.setState({ isAuth: false, authLoading: false });
         this.props.history.replace('/');
       })

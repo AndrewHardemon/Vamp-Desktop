@@ -12,6 +12,7 @@ const Post = props => (
       <h3 className="post_meta">
         {props.author} ({props.date})
       </h3>
+      {localStorage.getItem("name") === props.author ? (
       <div className="post_actions">
         <Button mode="flat" link={props.id}>
           View
@@ -23,15 +24,23 @@ const Post = props => (
           X
         </Button>
       </div>
+      ) : (
+        <div className="post_actions">
+          <Button mode="flat" onClick={props.onStartEdit}>
+            Reply
+          </Button>
+        </div>
+      )}
     </header>
     <hr></hr>
-    <div className="post_image" style={props.image ? null : {display: "none"}}>
-      <Link to={props.id}>
-        <Image imageUrl={`${BASE_API_URL}/images/` + props.image} contain /> 
-      </Link>
+    <div className='post_container'>
+      <div className="post_content">{props.content}</div>
+      <div className="post_image" style={props.image ? null : {display: "none"}}>
+        <Link to={props.id}>
+          <Image imageUrl={`${BASE_API_URL}/images/` + props.image} contain /> 
+        </Link>
+      </div>
     </div>
-    <div className="post_content">{props.content}</div>
-
   </article>
 );
 
